@@ -1,0 +1,158 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Planet Eater</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="app-shell">
+    <header class="topbar">
+      <div class="brand-block">
+        <span class="brand-kicker">PIXEL COSMOS</span>
+        <h1>PLANET EATER</h1>
+        <p>Relax, chomp worlds, and turn stardust into upgrades.</p>
+      </div>
+
+      <div class="top-stats">
+        <div class="stat-box">
+          <span class="stat-label">Mode</span>
+          <strong id="modeValue">Singleplayer</strong>
+        </div>
+        <div class="stat-box">
+          <span class="stat-label">Wave</span>
+          <strong id="waveValue">1</strong>
+        </div>
+        <div class="stat-box">
+          <span class="stat-label">Credits</span>
+          <strong id="creditsValue">0</strong>
+        </div>
+        <div class="stat-box">
+          <span class="stat-label">Best</span>
+          <strong id="bestWaveValue">1</strong>
+        </div>
+      </div>
+    </header>
+
+    <main class="game-grid">
+      <section class="scene-card">
+        <div class="scene-frame" id="sceneFrame">
+          <div class="scene-stage" id="sceneStage">
+            <canvas id="sceneBg" aria-hidden="true"></canvas>
+            <canvas id="scene" aria-label="Planet Eater game view"></canvas>
+            <canvas id="sceneFx" aria-hidden="true"></canvas>
+          </div>
+
+          <div class="scene-overlay">
+            <div class="planet-card">
+              <span class="eyebrow">CURRENT PLANET</span>
+              <strong id="planetName">Soft Bloom</strong>
+              <span id="planetType">Verdant Garden</span>
+            </div>
+
+            <div class="mass-card">
+              <div class="mass-header">
+                <span>Mass</span>
+                <strong id="planetMassValue">100%</strong>
+              </div>
+              <div class="mass-bar">
+                <div id="planetMassBar"></div>
+              </div>
+            </div>
+
+            <div class="planet-blurb" id="planetBlurb">
+              Click a spot on the planet to bite there. Right-drag to turn the camera.
+            </div>
+          </div>
+
+          <div class="controls-strip">
+            Click planet to chomp there. Right-drag to turn camera. Mouse wheel zooms.
+          </div>
+
+          <div class="toast hidden" id="toast"></div>
+        </div>
+      </section>
+
+      <aside class="side-panel">
+        <section class="panel-card status-panel">
+          <div class="panel-heading">
+            <span class="eyebrow">RUN STATUS</span>
+            <button class="ghost-button" id="menuButton" type="button">MENU</button>
+          </div>
+
+          <div class="fact-grid">
+            <div class="fact-box">
+              <span class="stat-label">Difficulty</span>
+              <strong id="difficultyValue">Soft</strong>
+            </div>
+            <div class="fact-box">
+              <span class="stat-label">Value / Bite</span>
+              <strong id="valueValue">1.0x</strong>
+            </div>
+            <div class="fact-box wide">
+              <span class="stat-label">Crew</span>
+              <strong id="crewValue">Solo drift</strong>
+            </div>
+            <div class="fact-box wide">
+              <span class="stat-label">Lifetime Credits</span>
+              <strong id="lifetimeValue">0</strong>
+            </div>
+          </div>
+        </section>
+
+        <section class="panel-card">
+          <div class="panel-heading">
+            <span class="eyebrow">UPGRADES</span>
+          </div>
+          <div class="shop-list" id="upgradeList"></div>
+        </section>
+
+        <section class="panel-card">
+          <div class="panel-heading">
+            <span class="eyebrow">SHOP STUFF</span>
+          </div>
+          <div class="shop-list" id="gadgetList"></div>
+        </section>
+      </aside>
+    </main>
+  </div>
+
+  <div class="home-overlay" id="homeOverlay">
+    <div class="home-card">
+      <span class="eyebrow">START A RUN</span>
+      <h2>Choose your cosmic appetite</h2>
+      <p>
+        This is a laid-back 3D planet-eating toy. Planets get tougher as waves rise,
+        credits buy stronger upgrades, and bot mode gives you a sleepy helper crew.
+      </p>
+
+      <div class="mode-grid">
+        <button class="mode-button" data-start-mode="single" type="button">
+          <strong>Singleplayer</strong>
+          <span>Just you, the stars, and a lot of snacks.</span>
+        </button>
+        <button class="mode-button" data-start-mode="bot" type="button">
+          <strong>Bot Crew</strong>
+          <span>Three tiny bots chew alongside you for a calmer flow.</span>
+        </button>
+      </div>
+
+      <button class="resume-button hidden" id="resumeButton" type="button">RESUME RUN</button>
+
+      <div class="overlay-stats">
+        <div>
+          <span class="stat-label">Best Wave</span>
+          <strong id="overlayBestWave">1</strong>
+        </div>
+        <div>
+          <span class="stat-label">Lifetime Credits</span>
+          <strong id="overlayLifetime">0</strong>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script defer src="main.js"></script>
+</body>
+</html>
